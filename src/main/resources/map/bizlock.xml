@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.MysqlLockDao">
+    <insert id="insertLock" useGeneratedKeys="true" parameterType="model.MysqlLock" keyProperty="id">
+        INSERT INTO biz_lock (`name`, gmtCreate) VALUE (#{name}, unix_timestamp())
+    </insert>
+
+    <delete id="deleteLock" parameterType="String">
+        DELETE FROM biz_lock WHERE `name` = #{name}
+    </delete>
+</mapper>
